@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "blogs:dev": "vuepress dev blogs",
+    "blogs:build": "vuepress build blogs"
+  },
+  "devDependencies": {
+  },
+  "dependencies": {
+    "@vuepress/plugin-blog": "1.0.0-alpha.32"
+  }
+}
