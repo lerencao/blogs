@@ -1,11 +1,12 @@
 ---
 layout: Post
-title: notes on memory order
 tags:
   - memory order
 ---
 
- https://mechanical-sympathy.blogspot.com/2011/07/memory-barriersfences.html 的阅读笔记。
+## Memory order 笔记
+
+https://mechanical-sympathy.blogspot.com/2011/07/memory-barriersfences.html 的阅读笔记。
 memory barrier 保证 barrier 两边的指令执行结果可以以程序顺序的方式被其他 CPU 观察到。
 
 
@@ -29,3 +30,4 @@ load barrier:
 All writes that occur before a volatile store are visible by any other threads with the predicate that the other threads load this new store.
 
 在一个线程里更新 volatile 字段可以保证，当其他线程看见这个 volatile 字段的更新值后，也能看见这个线程在之前做的更新操作。
+

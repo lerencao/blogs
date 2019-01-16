@@ -1,12 +1,13 @@
 ---
 layout: Post
-title: Rust Future 执行器
 tags:
   - rust
   - async-await
   - future
 ---
 
+
+## Rust Future 执行器
 
 ### Execution on current thread ###
 
