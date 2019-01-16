@@ -1,5 +1,5 @@
 module.exports = {
-  base: "blogs",
+  base: "/blogs/",
   title: "bloging",
   description: "some notes about cs",
   markdown: {

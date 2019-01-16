@@ -5,7 +5,11 @@
   <ul class="posts">
     <li v-for="post in $site.pages"
         v-if="post.regularPath.startsWith('/_posts')">
-    <a :href="post.path">{{ post.title }}</a>
+      <router-link
+            :to="post.path"
+          >
+            {{ post.title || post.path }}
+          </router-link>
     </li>
   </ul>
 </div>
