@@ -4,6 +4,7 @@
     "blogs:build": "vuepress build blogs"
   },
   "devDependencies": {
+    "vuepress": "^1.0.0-alpha.32"
   },
   "dependencies": {
     "@vuepress/plugin-blog": "1.0.0-alpha.32"
