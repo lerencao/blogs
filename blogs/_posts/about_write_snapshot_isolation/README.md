@@ -8,7 +8,7 @@ tags:
 ---
 
 
-## Paper: A critique of snapshot isolation 笔记 ##
+## Paper: A critique of snapshot isolation 笔记
 
 
 ### Section 2 ###
