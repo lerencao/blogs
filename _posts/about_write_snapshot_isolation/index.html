@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Paper: A critique of snapshot isolation 笔记 | bloging</title>
+    <meta name="description" content="some notes about cs">
+    <link rel="icon" href="/blogs/img/logo.ico">
+  <link rel="manifest" href="/blogs/manifest.json">
+    
+    <link rel="preload" href="/blogs/assets/css/0.styles.8b9e79ee.css" as="style"><link rel="preload" href="/blogs/assets/js/app.aa15e581.js" as="script"><link rel="preload" href="/blogs/assets/js/2.b2c8d346.js" as="script"><link rel="preload" href="/blogs/assets/js/9.9d1a03b3.js" as="script"><link rel="prefetch" href="/blogs/assets/js/10.ba4c31f4.js"><link rel="prefetch" href="/blogs/assets/js/11.b4a8a674.js"><link rel="prefetch" href="/blogs/assets/js/12.29ad8b2d.js"><link rel="prefetch" href="/blogs/assets/js/3.5b8eab2c.js"><link rel="prefetch" href="/blogs/assets/js/4.2d02bb5f.js"><link rel="prefetch" href="/blogs/assets/js/5.638d79b0.js"><link rel="prefetch" href="/blogs/assets/js/6.f9d58ded.js"><link rel="prefetch" href="/blogs/assets/js/7.eec15176.js"><link rel="prefetch" href="/blogs/assets/js/8.f7f10563.js">
+    <link rel="stylesheet" href="/blogs/assets/css/0.styles.8b9e79ee.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><article id="post"><div class="content default"><h2 id="paper-a-critique-of-snapshot-isolation-笔记">Paper: A critique of snapshot isolation 笔记</h2> <h3 id="section-2">Section 2</h3> <ul><li>both write to row r</li> <li>时间重叠：si &lt; cj, ci &gt; sj</li></ul> <p>介绍了 SI 的两种实现方式：</p> <ul><li>基于锁的实现，拿 percolator 举例。</li> <li>无锁的实现。没细看，跳过了。</li></ul> <h3 id="section-3-serializablility">Section 3: Serializablility</h3> <p>首先说明了 SI 的问题：</p> <ul><li>避免 Write-Write 冲突不足够实现 Serializablility。有 write skew 的问题。</li> <li>同时也不是实现 Serializablility 的必要条件。禁止了一些事实上是 Serializable 的操作。</li></ul> <h4 id="section-4-read-write-vs-write-write">Section 4: Read-Write vs Write-Write</h4> <p>从 read-snapshot isolation 出发定义了 write-snapshot isolation：</p> <ul><li>txn2 修改了 txn1 读的数据。</li> <li>s1 &lt; c2, c1 &gt; c2</li></ul> <p>得出结论：</p> <ul><li>避免 Read-Write 冲突可以实现 Serializablility。</li> <li>但同样也禁止了一些是 Serializable 的操作。</li></ul></div></article><div class="global-ui"></div></div>
+    <script src="/blogs/assets/js/app.aa15e581.js" defer></script><script src="/blogs/assets/js/2.b2c8d346.js" defer></script><script src="/blogs/assets/js/9.9d1a03b3.js" defer></script>
+  </body>
+</html>

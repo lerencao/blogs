@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Cache coherence and memory order | bloging</title>
+    <meta name="description" content="some notes about cs">
+    <link rel="icon" href="/blogs/img/logo.ico">
+  <link rel="manifest" href="/blogs/manifest.json">
+    
+    <link rel="preload" href="/blogs/assets/css/0.styles.8b9e79ee.css" as="style"><link rel="preload" href="/blogs/assets/js/app.aa15e581.js" as="script"><link rel="preload" href="/blogs/assets/js/2.b2c8d346.js" as="script"><link rel="preload" href="/blogs/assets/js/11.b4a8a674.js" as="script"><link rel="prefetch" href="/blogs/assets/js/10.ba4c31f4.js"><link rel="prefetch" href="/blogs/assets/js/12.29ad8b2d.js"><link rel="prefetch" href="/blogs/assets/js/3.5b8eab2c.js"><link rel="prefetch" href="/blogs/assets/js/4.2d02bb5f.js"><link rel="prefetch" href="/blogs/assets/js/5.638d79b0.js"><link rel="prefetch" href="/blogs/assets/js/6.f9d58ded.js"><link rel="prefetch" href="/blogs/assets/js/7.eec15176.js"><link rel="prefetch" href="/blogs/assets/js/8.f7f10563.js"><link rel="prefetch" href="/blogs/assets/js/9.9d1a03b3.js">
+    <link rel="stylesheet" href="/blogs/assets/css/0.styles.8b9e79ee.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><article id="post"><div class="content default"><h2 id="cache-coherence-and-memory-order">Cache coherence and memory order</h2> <p>https://mechanical-sympathy.blogspot.com/2011/07/memory-barriersfences.html 的阅读笔记。
+memory barrier 保证 barrier 两边的指令执行结果可以以程序顺序的方式被其他 CPU 观察到。</p> <p>store barrier:</p> <blockquote><p>'sfence' instruction on x86, waits for all store instructions prior to the barrier to be written from the store buffer to the L1 cache for the CPU on which it is issued.
+All previous updates to memory that happened before the barrier are now visible.</p></blockquote> <p>visible 只是说 数据写到 cache 了，但还不能保证其他 cpu 的 cache 也是最新的。</p> <p>load barrier:</p> <blockquote><p>“lfence” instruction on x86, ensures all load instructions after the barrier to happen after the barrier
+and then wait on the load buffer to drain for the issuing CPU.</p></blockquote> <p>保证 barrier 之后的 load 指令一定发生在 barrier 之后，不能被重排到 barrier 之前。
+并 flush load buffer 中的指令，去获取数据（from other cpu cache or memory）。
+也就是说 barrier 之后的 load 指令要在等待之前 load 指令都获取到最新值之后才能执行。</p> <h3 id="volatile-in-java">volatile in Java</h3> <p>All writes that occur before a volatile store are visible by any other threads with the predicate that the other threads load this new store.</p> <p>在一个线程里更新 volatile 字段可以保证，当其他线程看见这个 volatile 字段的更新值后，也能看见这个线程在之前做的更新操作。</p> <h3 id="为什么要有-memory-order">为什么要有 memory order</h3> <p><strong>加了 Store Buffer 之后，存在 store buffer 中的新值无法被其他 CPU 感知到。</strong> <strong>另外，invalidate queue 中的 message 被处理完后，才能正常读到新值。</strong></p></div></article><div class="global-ui"></div></div>
+    <script src="/blogs/assets/js/app.aa15e581.js" defer></script><script src="/blogs/assets/js/2.b2c8d346.js" defer></script><script src="/blogs/assets/js/11.b4a8a674.js" defer></script>
+  </body>
+</html>
